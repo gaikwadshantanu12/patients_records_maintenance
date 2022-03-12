@@ -29,7 +29,7 @@
 							<h4 class="mt-3">Patient's Registration Page</h4>
 						</div>
 						<div class="card-body">
-							<form action="" id="PatientRegistrationForm" method="POST">
+							<form action="PatientRegistrationForm" method="POST">
 								<div class="form-row">
     								<div class="form-group col">
    										<label for="firstName">Enter Your First Name</label>
