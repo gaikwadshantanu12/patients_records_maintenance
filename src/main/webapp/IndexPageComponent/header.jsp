@@ -8,22 +8,14 @@
 			
 					<div class="collapse navbar-collapse text-center" id="collapsenavbar">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item">
-								<a href="#" class="nav-link text-white ml-2 mr-2">Services</a>
-							</li>
-					
-							<li class="nav-item">
-								<a href="#" class="nav-link text-white ml-2 mr-2">Our Team</a>
-							</li>
-							
 							 <li class="nav-item dropdown">
         						<a class="nav-link dropdown-toggle text-white ml-2 mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           							I'm Doctor
         						</a>
         						<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-         							<a class="dropdown-item" href="#"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>LogIn as Doctor</a>
+         							<a class="dropdown-item" href="Doctors/DoctorsLogin.jsp"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>LogIn as Doctor</a>
          							<div class="dropdown-divider"></div>
-          							<a class="dropdown-item" href="#"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>SignUp as Doctor</a>
+          							<a class="dropdown-item" href="Doctors/DoctorsSignup.jsp"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>SignUp as Doctor</a>
         						</div>
       						</li>
 					
@@ -32,9 +24,9 @@
           							I'm Patient
         						</a>
         						<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-         							<a class="dropdown-item" href="#"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>LogIn as Patient</a>
+         							<a class="dropdown-item" href="Patients/PatientsLogin.jsp"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>LogIn as Patient</a>
          							<div class="dropdown-divider"></div>
-          							<a class="dropdown-item" href="#"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>SignUp as Patient</a>
+          							<a class="dropdown-item" href="Patients/PatientsSignup.jsp"><i class="fa fa-user-plus mr-2" aria-hidden="true"></i>SignUp as Patient</a>
         						</div>
       						</li>
 						</ul>
