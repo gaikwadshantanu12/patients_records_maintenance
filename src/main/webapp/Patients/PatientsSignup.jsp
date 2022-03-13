@@ -29,7 +29,7 @@
 							<h4 class="mt-3">Patient's Registration Page</h4>
 						</div>
 						<div class="card-body">
-							<form action="PatientRegistrationForm" method="POST">
+							<form action="" method="POST" enctype="multipart/form-data">
 								<div class="form-row">
     								<div class="form-group col">
    										<label for="firstName">Enter Your First Name</label>
@@ -43,7 +43,7 @@
 	    						
   								<div class="form-group">
     								<label for="inputEmail">Enter Your Email</label>
-     								<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter proper email address. For eg. 'android@whatsapp.com'" required="required">
+     								<input type="email" class="form-control" id="emailID" name="emailID" placeholder="Enter Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter proper email address. For eg. 'android@whatsapp.com'" required="required">
 	    						</div>
   								
   								<div class="form-row">
