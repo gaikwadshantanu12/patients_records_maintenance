@@ -28,8 +28,35 @@
 							<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
 							<h4 class="mt-3">Patient's Registration Page</h4>
 						</div>
+						
+						<%
+							String registration_msg = (String) session.getAttribute("register_success");
+							if (registration_msg != null) {
+						%>
+					
+						<div class="alert alert-success" role="alert"><%=registration_msg%>
+							<a href="PatientsLogin.jsp"> Click here to login</a>
+						</div>
+					
+						<%
+							session.removeAttribute("register_success");
+						}
+						%>
+
+						<%
+							String failed_msg = (String) session.getAttribute("register_fail");
+							if (failed_msg != null) {
+						%>
+					
+					<div class="alert alert-danger" role="alert"><%=failed_msg%></div>
+					
+					<%
+						session.removeAttribute("register_fail");
+					}
+					%>
+					
 						<div class="card-body">
-							<form action="" method="POST" enctype="multipart/form-data">
+							<form action="../PatientsSignup" method="POST">
 								<div class="form-row">
     								<div class="form-group col">
    										<label for="firstName">Enter Your First Name</label>
@@ -97,10 +124,12 @@
    									<textarea rows="3" cols="" class="form-control" name="inputAddress" id="inputAddress" placeholder="Enter Your Address" style="resize: none;" required="required"></textarea>
 	 							</div>
  							
+ 								<!-- 
  								<div class="form-group">
     								<label for="profileImage">Select Profile Photo</label>
     								<input type="file" class="form-control" id="profileImage" name="profileImage" accept=".jpg,.jpeg,.png,.pdf" required="required">
   								</div>
+  								 -->
   	
   								<div class="d-flex justify-content-center mt-5 mb-3">
   									<button type="submit" id="registerBtn" name="registerBtn" class="btn btn-success">Register As Patient</button>

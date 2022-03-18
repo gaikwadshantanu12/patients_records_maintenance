@@ -32,8 +32,39 @@
 							<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
 							<h4 class="mt-3">Patient's Login Page</h4>
 						</div>
+						
+						<%
+							String failed_msg = (String) session.getAttribute("login_failed");
+							if (failed_msg != null) {
+						%>
+						<div class="alert alert-danger" role="alert"><%= failed_msg%></div>
+						<%
+								session.removeAttribute("login_failed");
+							}
+						%>
+						
+						<%
+							String loginerror = (String)session.getAttribute("login-error");
+							if(loginerror != null) {
+						%>
+						<div class="alert alert-danger" role="alert"><%= loginerror%></div>
+						<%
+								session.removeAttribute("login-error");
+							}
+						%>
+					
+						<%
+							String logout_message = (String)session.getAttribute("logout-message");
+							if(logout_message != null) {
+						%>
+						<div class="alert alert-success" role="alert"><%= logout_message%></div>
+						<%
+								session.removeAttribute("logout-message");
+							}
+						%>
+					
 						<div class="card-body">
-							<form action="" id="PatientLoginForm" method="POST">
+							<form action="../PatientsLogin" id="PatientLoginForm" method="POST">
   								<div class="form-group">
     								<label for="inputEmail">Enter Your Email</label>
      								<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter Your Email" required="required">

@@ -37,14 +37,14 @@
       			</li>
       			
       			<li class="nav-item dropdown">
-        			<a class="nav-link dropdown-toggle text-white ml-2 mr-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        			<a class="nav-link dropdown-toggle text-white ml-2 mr-2" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           				<i class="fa fa-cog mr-1" aria-hidden="true"></i>
           				Settings
         			</a>
         			<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
          				<a class="dropdown-item" href="#"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>My Profile</a>
          				<div class="dropdown-divider"></div>
-          				<a class="dropdown-item" href="#"><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Log Out</a>
+          				<a class="dropdown-item" href="../PatientsLogout"><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Log Out</a>
         			</div>
       			</li>
 			</ul>

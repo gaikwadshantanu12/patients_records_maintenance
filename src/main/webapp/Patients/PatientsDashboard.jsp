@@ -1,4 +1,14 @@
+<%@page import="com.shantanu.Patients.PatientsDetails"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+	
+	<%
+    	PatientsDetails user2 = (PatientsDetails)session.getAttribute("details2");
+    		if(user2 == null) {
+    			response.sendRedirect("../Patients/PatientsLogin.jsp");
+    			session.setAttribute("login-error", "Please Login, Else You Can't Access Home Page");
+    		}
+    %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,5 +18,7 @@
 	</head>
 	<body>
 		<%@include file="DashboardHeader.jsp" %>
+		
+		
 	</body>
 </html>
