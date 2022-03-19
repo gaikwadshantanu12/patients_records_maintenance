@@ -9,11 +9,11 @@ public class DatabaseConnection {
 	public static Connection getDatabaseConnection() {
 		try {
 			if(connection == null) {
-				System.out.println("Driver registration started");
+				//System.out.println("Driver registration started");
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				System.out.println("Driver is registered");
+				//System.out.println("Driver is registered");
 				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/patients_records_maintenance","shantanu","shantanu");
-				System.out.println("Connected to database !");
+				//System.out.println("Connected to database !");
 			}
 		} 
 		catch(Exception e) {

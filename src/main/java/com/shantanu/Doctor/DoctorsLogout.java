@@ -1,4 +1,4 @@
-package com.shantanu.Patients;
+package com.shantanu.Doctor;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,18 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/PatientsLogout")
-public class PatientsLogout extends HttpServlet {
+@WebServlet("/DoctorsLogout")
+public class DoctorsLogout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			session.removeAttribute("patientdetails2");
+			session.removeAttribute("doctorsdetails2");
 			
 			HttpSession session2 = request.getSession();
-			session.setAttribute("logout-message", "Patient Logout Successfully !");
+			session.setAttribute("logout-message", "Doctor Logout Successfully !");
 			
-			response.sendRedirect("../patients_records_maintenance/Patients/PatientsLogin.jsp");
+			response.sendRedirect("../patients_records_maintenance/Doctors/DoctorsLogin.jsp");
 		} 
 		catch (Exception e) {
 			// TODO: handle exception

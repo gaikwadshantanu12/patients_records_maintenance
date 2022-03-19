@@ -64,7 +64,7 @@
 						%>
 					
 						<div class="card-body">
-							<form action="../PatientsLogin" id="PatientLoginForm" method="POST">
+							<form action="../PatientsLogin" method="POST">
   								<div class="form-group">
     								<label for="inputEmail">Enter Your Email</label>
      								<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter Your Email" required="required">
@@ -72,7 +72,7 @@
     	
  								<div class="form-group">
     								<label for="inputPassword">Enter Your Password</label>
-    								<input type="password" class="form-control" id="inputPassword" name="inputPassword" maxlength="15" placeholder="Enter Your Password" required="required">
+    								<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Enter Your Password" required="required">
   								</div>
   	
   								<div class="d-flex justify-content-center mt-5 mb-3">

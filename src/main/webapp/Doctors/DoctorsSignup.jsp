@@ -35,8 +35,35 @@
 							<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
 							<h4 class="mt-3">Doctor's Registration Page</h4>
 						</div>
+						
+						<%
+							String registration_msg = (String) session.getAttribute("register_success");
+							if (registration_msg != null) {
+						%>
+					
+						<div class="alert alert-success" role="alert"><%=registration_msg%>
+							<a href="DoctorsLogin.jsp"> Click here to login</a>
+						</div>
+					
+						<%
+								session.removeAttribute("register_success");
+							}
+						%>
+
+						<%
+							String failed_msg = (String) session.getAttribute("register_fail");
+							if (failed_msg != null) {
+						%>
+					
+						<div class="alert alert-danger" role="alert"><%=failed_msg%></div>
+					
+						<%
+								session.removeAttribute("register_fail");
+							}
+						%>
+					
 						<div class="card-body">
-							<form action="" id="PatientRegistrationForm" method="POST">
+							<form action="../DoctorsSignup" method="POST">
 								<h5 class="card-title separation-heading">Personal Details :</h5>
 								<div class="form-row">
     								<div class="form-group col">
@@ -89,10 +116,12 @@
 	    							</div>
   								</div>
   								
+  								<!-- 
   								<div class="form-group">
     								<label for="profileImage">Select Profile Photo</label>
     								<input type="file" class="form-control" id="profileImage" name="profileImage" accept=".jpg,.jpeg,.png,.pdf" required="required">
   								</div>
+  								 -->
   								
   								<h5 class="card-title mt-5 separation-heading">Education/Professional Details :</h5>
   								<div class="form-group">

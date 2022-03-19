@@ -33,8 +33,39 @@
 							<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
 							<h4 class="mt-3">Doctor's Login Page</h4>
 						</div>
+						
+						<%
+							String failed_msg = (String) session.getAttribute("login_failed");
+							if (failed_msg != null) {
+						%>
+						<div class="alert alert-danger" role="alert"><%= failed_msg%></div>
+						<%
+								session.removeAttribute("login_failed");
+							}
+						%>
+						
+						<%
+							String loginerror = (String)session.getAttribute("login-error");
+							if(loginerror != null) {
+						%>
+						<div class="alert alert-danger" role="alert"><%= loginerror%></div>
+						<%
+								session.removeAttribute("login-error");
+							}
+						%>
+					
+						<%
+							String logout_message = (String)session.getAttribute("logout-message");
+							if(logout_message != null) {
+						%>
+						<div class="alert alert-success" role="alert"><%= logout_message%></div>
+						<%
+								session.removeAttribute("logout-message");
+							}
+						%>
+						
 						<div class="card-body">
-							<form action="" id="PatientLoginForm" method="POST">
+							<form action="../DoctorsLogin" method="POST">
   								<div class="form-group">
     								<label for="inputEmail">Enter Your Email</label>
      								<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter Your Email" required="required">
@@ -42,7 +73,7 @@
     	
  								<div class="form-group">
     								<label for="inputPassword">Enter Your Password</label>
-    								<input type="password" class="form-control" id="inputPassword" name="inputPassword" maxlength="15" placeholder="Enter Your Password" required="required">
+    								<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Enter Your Password" required="required">
   								</div>
   	
   								<div class="d-flex justify-content-center mt-5 mb-3">

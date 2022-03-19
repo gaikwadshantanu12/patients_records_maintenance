@@ -31,7 +31,7 @@ public class PatientsSignup extends HttpServlet {
 					if(validation.mobileValidate(mobile)) {
 						response.getWriter().println("Valid Mobile No");
 						
-						// if everything right and valid, let's add data to database
+						// if everything right and valid, let's add patient's data to database
 						PatientsDetails patientsDetails = new PatientsDetails();
 						patientsDetails.setFirstName(firstName);
 						patientsDetails.setLastName(lastName);
@@ -46,11 +46,13 @@ public class PatientsSignup extends HttpServlet {
 						boolean res = dao.addPatientsData(patientsDetails);
 						
 						if(res) {
+							System.out.println("Patient registered successfully !");
 							session = request.getSession();
 							session.setAttribute("register_success", "Patient registered successfully !");
 							response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");
 						}
 						else {
+							System.out.println("Patient not registered. Something went wrong on server !");
 							session = request.getSession();
 							session.setAttribute("register_fail", "Patient not registered. Something went wrong on server !");
 							response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");
@@ -58,28 +60,28 @@ public class PatientsSignup extends HttpServlet {
 						
 					}
 					else {
-						//response.getWriter().println("Invalid Mobile No");
+						System.out.println("Invalid mobile number. Please provide a valid mobile number.");
 						session = request.getSession();
 						session.setAttribute("invalid_mob", "Invalid mobile number. Please provide a valid mobile number.");
 						response.sendRedirect("../patients_records_maintenance/Patients/PatientsLogin.jsp");
 					}
 				}
 				else {
-					//response.getWriter().println("Password & Confirm Password Not Matched");
+					System.out.println("Password & Confirm Password Not Matched.");
 					session = request.getSession();
 					session.setAttribute("pass_confirm_pass", "Password & Confirm Password Not Matched.");
 					response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");
 				}
 			}
 			else {
-				//response.getWriter().println("Invalid Password");
+				System.out.println("Invalid Password. Please provide a valid password.");
 				session = request.getSession();
 				session.setAttribute("invalid_pass", "Invalid Password. Please provide a valid password.");
 				response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");
 			}
 		}
 		else {
-			//response.getWriter().println("InValid Email");
+			System.out.println("Invalid Email ID. Please provide a valid email address.");
 			session = request.getSession();
 			session.setAttribute("invalid_email", "Invalid Email ID. Please provide a valid email address.");
 			response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");

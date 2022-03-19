@@ -39,8 +39,8 @@
 						</div>
 					
 						<%
-							session.removeAttribute("register_success");
-						}
+								session.removeAttribute("register_success");
+							}
 						%>
 
 						<%
@@ -48,12 +48,12 @@
 							if (failed_msg != null) {
 						%>
 					
-					<div class="alert alert-danger" role="alert"><%=failed_msg%></div>
+						<div class="alert alert-danger" role="alert"><%=failed_msg%></div>
 					
-					<%
-						session.removeAttribute("register_fail");
-					}
-					%>
+						<%
+								session.removeAttribute("register_fail");
+							}
+						%>
 					
 						<div class="card-body">
 							<form action="../PatientsSignup" method="POST">
