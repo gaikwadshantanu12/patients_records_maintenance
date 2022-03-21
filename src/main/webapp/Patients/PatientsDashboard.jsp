@@ -17,8 +17,6 @@
 		<%@include file="../CDNLinks.jsp" %>
 	</head>
 	<body>
-		<%@include file="DashboardHeader.jsp" %>
-		
-		
+		<%@include file="AddNewRecords.jsp" %>
 	</body>
 </html>

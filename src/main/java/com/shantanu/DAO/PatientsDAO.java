@@ -3,7 +3,10 @@ package com.shantanu.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.shantanu.Doctor.DoctorsDetails;
 import com.shantanu.Patients.PatientsDetails;
 
 public class PatientsDAO {
@@ -61,6 +64,10 @@ public class PatientsDAO {
 				det.setLastName(resultSet.getString("last_name"));
 				det.setPassword(resultSet.getString("password"));
 				det.setPatientID(resultSet.getInt("patient_uid"));
+				det.setGender(resultSet.getString("gender"));
+				det.setMobile(resultSet.getString("mobile_no"));
+				det.setAddress(resultSet.getString("address"));
+				det.setAge(resultSet.getString("age"));
 			}
 		} 
 		catch (Exception e) {
@@ -68,5 +75,39 @@ public class PatientsDAO {
 		}
 		
 		return det;
+	}
+	
+	public List<DoctorsDetails> getAvailableDoctors(){
+		List<DoctorsDetails> list = new ArrayList<DoctorsDetails>();
+		DoctorsDetails doctorsDetails = null;
+		
+		try {
+			String query = "SELECT * FROM doctors_details";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				doctorsDetails = new DoctorsDetails();
+				doctorsDetails.setDoctorID(resultSet.getInt("doctor_uid"));
+				doctorsDetails.setFirstName(resultSet.getString("first_name"));
+				doctorsDetails.setLastName(resultSet.getString("last_name"));
+				doctorsDetails.setEmail(resultSet.getString("email_id"));
+				doctorsDetails.setPassword(resultSet.getString("password"));
+				doctorsDetails.setMobile1(resultSet.getString("mobile_no1"));
+				doctorsDetails.setMobile2(resultSet.getString("mobile_no2"));
+				doctorsDetails.setEducationDetails(resultSet.getString("education_details"));
+				doctorsDetails.setHospitalName(resultSet.getString("hospital_name"));
+				doctorsDetails.setHospitalAddress(resultSet.getString("hospital_address"));
+				
+				list.add(doctorsDetails);
+			}
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
 	}
 }
