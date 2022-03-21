@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.shantanu.Doctor.DoctorsDetails;
 import com.shantanu.Patients.PatientsDetails;
+import com.shantanu.Patients.PatientsRecordDetails;
 
 public class PatientsDAO {
 	private Connection connection;
@@ -109,5 +110,29 @@ public class PatientsDAO {
 		}
 		
 		return list;
+	}
+	
+	public boolean addPatientsRecords(PatientsRecordDetails details) {
+		boolean res = false;
+		
+		try {
+			String query = "INSERT INTO patients_records(disease_name, disease_description, patients_uid) values(?,?,?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setString(1, details.getDiseaseName());
+			preparedStatement.setString(2, details.getDiseaseDescription());
+			preparedStatement.setInt(3, details.getPatientID());
+			
+			int i = preparedStatement.executeUpdate();
+			if(i== 1) {
+				res = true;
+			}
+			
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 }

@@ -1,4 +1,14 @@
+<%@page import="com.shantanu.Patients.PatientsDetails"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+	<%
+    	PatientsDetails user3 = (PatientsDetails)session.getAttribute("patientdetails2");
+    		if(user3 == null) {
+    			response.sendRedirect("../Patients/PatientsLogin.jsp");
+    			session.setAttribute("login-error", "Please login to add new patient's records !");
+    		}
+    %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +36,29 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<form action="" method="POST">
+						<form action="../AddNewRecords" method="POST">
+							<input type="hidden" name="patientsID" id="patientsID" value="<%=user3.getPatientID()%>">
+							
+							<%
+								String record_inserted = (String) session.getAttribute("record-inserted");
+								if (record_inserted != null) {
+							%>
+							<div class="alert alert-success" role="alert"><%= record_inserted%></div>
+							<%
+									session.removeAttribute("record-inserted");
+								}
+							%>
+						
+							<%
+								String record_not_inserted = (String)session.getAttribute("record-not-inserted");
+								if(record_not_inserted != null) {
+							%>
+							<div class="alert alert-danger" role="alert"><%= record_not_inserted%></div>
+							<%
+									session.removeAttribute("record_not_inserted");
+								}
+							%>
+						
   							<div class="form-group mt-4">
     							<label for="diseaseName">Enter Disease Name</label>
     							<input type="text" class="form-control" name="diseaseName" id="diseaseName" placeholder="Enter Disease Name" aria-describedby="titleHelp" required="required">
