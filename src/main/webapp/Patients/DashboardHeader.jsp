@@ -16,7 +16,7 @@
       			</li>
       						
       			<li class="nav-item">
-        			<a class="nav-link text-white ml-2 mr-2" href="#">
+        			<a class="nav-link text-white ml-2 mr-2" href="ViewAllRecords.jsp">
         				<i class="fa fa-list-ul mr-1" aria-hidden="true"></i>
           				View All Records
         			</a>

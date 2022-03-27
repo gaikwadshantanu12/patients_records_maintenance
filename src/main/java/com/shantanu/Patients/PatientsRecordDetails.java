@@ -33,5 +33,4 @@ public class PatientsRecordDetails {
 	public void setDiseaseDescription(String diseaseDescription) {
 		this.diseaseDescription = diseaseDescription;
 	}
-	
 }

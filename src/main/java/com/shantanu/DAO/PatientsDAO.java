@@ -9,6 +9,7 @@ import java.util.List;
 import com.shantanu.Doctor.DoctorsDetails;
 import com.shantanu.Patients.PatientsDetails;
 import com.shantanu.Patients.PatientsRecordDetails;
+import com.shantanu.Patients.ViewAllPatientsRecords;
 
 public class PatientsDAO {
 	private Connection connection;
@@ -76,6 +77,37 @@ public class PatientsDAO {
 		}
 		
 		return det;
+	}
+	
+	public List<ViewAllPatientsRecords> getAllPatientsDetails(int patientsID){
+		List<ViewAllPatientsRecords> list = new ArrayList<ViewAllPatientsRecords>();
+		ViewAllPatientsRecords patientsRecordsDetails = null;
+		
+		try {
+			String query = "SELECT * FROM patients_records WHERE patients_uid=?";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, patientsID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				patientsRecordsDetails = new ViewAllPatientsRecords();
+				patientsRecordsDetails.setRecordsID(resultSet.getInt("records_id"));
+				patientsRecordsDetails.setDiseaseName(resultSet.getString("disease_name"));
+				patientsRecordsDetails.setDiseaseDescription(resultSet.getString("disease_description"));
+				patientsRecordsDetails.setDate(resultSet.getDate("uploaded_date"));
+				patientsRecordsDetails.SetTime(resultSet.getTime("uploaded_date"));
+				patientsRecordsDetails.setPatientsUID(resultSet.getInt("patients_uid"));
+				
+				list.add(patientsRecordsDetails);
+			}
+		} 
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
 	}
 	
 	public List<DoctorsDetails> getAvailableDoctors(){
