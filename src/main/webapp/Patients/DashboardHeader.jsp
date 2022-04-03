@@ -30,7 +30,7 @@
       			</li>
       						
       			<li class="nav-item">
-        			<a class="nav-link text-white ml-2 mr-2" href="#">
+        			<a class="nav-link text-white ml-2 mr-2" href="EnrolledDoctors.jsp">
         				<i class="fa fa-sticky-note mr-1" aria-hidden="true"></i>
           				Enrolled Doctor
         			</a>

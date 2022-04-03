@@ -6,7 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.shantanu.Doctor.DoctorsDetails;
+import com.shantanu.Patients.EnrolledDoctorsList;
 import com.shantanu.Patients.PatientsDetails;
 import com.shantanu.Patients.PatientsRecordDetails;
 import com.shantanu.Patients.ViewAllPatientsRecords;
@@ -163,6 +166,120 @@ public class PatientsDAO {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public boolean enrolledDoctor(int patientID, int doctorID) {
+		boolean res = false;
+		try {
+			String query = "INSERT INTO patients_enrolled_doctor(patient_uid, doctor_uid) values(?,?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, patientID);
+			preparedStatement.setInt(2, doctorID);
+			
+			int i = preparedStatement.executeUpdate();
+			if(i== 1) {
+				res = true;
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public boolean unEnrolledDoctor(int patientID, int doctorID) {
+		boolean res = false;
+		try {
+			String query = "DELETE FROM patients_enrolled_doctor WHERE patient_uid=? AND doctor_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, patientID);
+			preparedStatement.setInt(2, doctorID);
+			
+			int i = preparedStatement.executeUpdate();
+			if(i== 1) {
+				res = true;
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public List<EnrolledDoctorsList> getListofEnrolledDoctor(int patientID) {
+		List<EnrolledDoctorsList> list = new ArrayList<EnrolledDoctorsList>();
+		EnrolledDoctorsList doctorsList = null;
+		try {
+			String query = "SELECT * FROM patients_enrolled_doctor WHERE patient_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, patientID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				doctorsList = new EnrolledDoctorsList();
+				doctorsList.setDoctorID(resultSet.getInt("doctor_uid"));
+				doctorsList.setPatientID(resultSet.getInt("patient_uid"));
+				doctorsList.setEnrolled_doctor_id(resultSet.getInt("patients_enrolled_dr"));
+				list.add(doctorsList);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
+	}
+	
+	public DoctorsDetails getParticularDoctor(int doctorID) {
+		DoctorsDetails doctorsDetails = null;
+		try {
+			String query = "SELECT * FROM doctors_details WHERE doctor_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, doctorID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				doctorsDetails = new DoctorsDetails();
+				doctorsDetails.setDoctorID(resultSet.getInt("doctor_uid"));
+				doctorsDetails.setFirstName(resultSet.getString("first_name"));
+				doctorsDetails.setLastName(resultSet.getString("last_name"));
+				doctorsDetails.setEmail(resultSet.getString("email_id"));
+				doctorsDetails.setPassword(resultSet.getString("password"));
+				doctorsDetails.setMobile1(resultSet.getString("mobile_no1"));
+				doctorsDetails.setMobile2(resultSet.getString("mobile_no2"));
+				doctorsDetails.setEducationDetails(resultSet.getString("education_details"));
+				doctorsDetails.setHospitalName(resultSet.getString("hospital_name"));
+				doctorsDetails.setHospitalAddress(resultSet.getString("hospital_address"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return doctorsDetails;
+	}
+	
+	public boolean isDoctorEnroll(int doctorID) {
+		boolean res = false;
+		
+		try {
+			String query = "SELECT * FROM patients_enrolled_doctor WHERE doctor_uid=?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, doctorID);
+			
+			ResultSet resultSet = statement.executeQuery();
+			if(resultSet.next()) {
+				res = true;
+			}	
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
 		return res;

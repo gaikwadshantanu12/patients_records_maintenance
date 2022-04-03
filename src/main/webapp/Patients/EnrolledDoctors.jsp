@@ -1,19 +1,20 @@
-<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.shantanu.Doctor.DoctorsDetails"%>
+<%@page import="com.shantanu.Patients.EnrolledDoctorsList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.shantanu.DatabaseConnect.DatabaseConnection"%>
 <%@page import="com.shantanu.DAO.PatientsDAO"%>
 <%@page import="com.shantanu.Patients.PatientsDetails"%>
-<%@page import="com.shantanu.Doctor.DoctorsDetails"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-	<%
-    	PatientsDetails user2 = (PatientsDetails)session.getAttribute("patientdetails2");
-    		if(user2 == null) {
-    			response.sendRedirect("../Patients/PatientsLogin.jsp");
-    			session.setAttribute("login-error", "Please Login, Else You Can't Access Patient's Dashboard Page");
-    		}
-   %>
 
+	<%
+    	PatientsDetails user5 = (PatientsDetails)session.getAttribute("patientdetails2");
+    		if(user5 == null) {
+    			response.sendRedirect("../Patients/PatientsLogin.jsp");
+    			session.setAttribute("login-error", "Please login to view enrolled doctor's list !");
+    		}
+    %>
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,18 +40,20 @@
 		<%@include file="DashboardHeader.jsp" %>
 		
 		<div class="container-fluid cont">
-				<h2 class="text-center">Doctors Available</h2>
+				<h2 class="text-center">Enrolled Doctors</h2>
 		
 				<div class="row">
 					<div class="col-md-8 offset-md-2 mb-5">
 					
 					<%
-						if(user2 != null){
+						if(user5 != null){
 							PatientsDAO patientsDAO = new PatientsDAO(DatabaseConnection.getDatabaseConnection());
-							List<DoctorsDetails> details = patientsDAO.getAvailableDoctors();
-									
-							for(DoctorsDetails dd : details){%>
-								
+							
+							List<EnrolledDoctorsList> doctorsLists = patientsDAO.getListofEnrolledDoctor(user5.getPatientID());
+							
+							for(EnrolledDoctorsList enrolled_list : doctorsLists) {
+								DoctorsDetails dd = patientsDAO.getParticularDoctor(enrolled_list.getDoctorID());
+								%>
 								<div class="card mt-3">
 									
 									<div class="card-body p-4">
@@ -86,20 +89,7 @@
    											</div>
    											
    											<div>
-   												<%
-   													PatientsDAO dao = new PatientsDAO(DatabaseConnection.getDatabaseConnection());
-   													boolean result = dao.isDoctorEnroll(dd.getDoctorID());
-   													if(result) {
-   												%>
-   												<a class="btn btn-warning disabled" href="../EnrolledDoctor?doctor_id=<%=dd.getDoctorID() %>&patient_id=<%=user2.getPatientID()%>">Doctor Already Enrolled</a>
-   												 <%
-   												 	}
-   													else { %>
-   														<a class="btn btn-outline-success" href="../EnrolledDoctor?doctor_id=<%=dd.getDoctorID() %>&patient_id=<%=user2.getPatientID()%>">Enroll Doctor</a>
-   													<% }
-   													
-   												%>
-   												
+   												<a class="btn btn-outline-dark" href="../DisenrollDoctor?doctor_id=<%=dd.getDoctorID() %>&patient_id=<%=user5.getPatientID()%>">Unenroll Doctor</a>
    											</div>
  										</div>
 									</div>
@@ -111,5 +101,5 @@
 					</div>
 				</div>
 			</div>
-	</body>
+		</body>
 </html>
