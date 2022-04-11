@@ -1,4 +1,4 @@
-package com.shantanu.DAO;
+	package com.shantanu.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -266,13 +266,14 @@ public class PatientsDAO {
 		return doctorsDetails;
 	}
 	
-	public boolean isDoctorEnroll(int doctorID) {
+	public boolean isDoctorEnroll(int doctorID, int patientID) {
 		boolean res = false;
 		
 		try {
-			String query = "SELECT * FROM patients_enrolled_doctor WHERE doctor_uid=?";
+			String query = "SELECT * FROM patients_enrolled_doctor WHERE doctor_uid=? AND patient_uid=?";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, doctorID);
+			statement.setInt(2, patientID);
 			
 			ResultSet resultSet = statement.executeQuery();
 			if(resultSet.next()) {

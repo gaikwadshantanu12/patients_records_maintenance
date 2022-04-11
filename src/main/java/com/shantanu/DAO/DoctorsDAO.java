@@ -3,8 +3,12 @@ package com.shantanu.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.shantanu.Doctor.DoctorsDetails;
+import com.shantanu.Doctor.EnrolledPatientList;
+import com.shantanu.Patients.EnrolledDoctorsList;
 import com.shantanu.Patients.PatientsDetails;
 
 public class DoctorsDAO {
@@ -71,5 +75,58 @@ public class DoctorsDAO {
 		}
 		
 		return det;
+	}
+	
+	public List<EnrolledPatientList> getListOfMyPatients(int doctorID) {
+		List<EnrolledPatientList> list = new ArrayList<EnrolledPatientList>();
+		EnrolledPatientList patientList = null;
+		try {
+			String query = "SELECT * FROM patients_enrolled_doctor WHERE doctor_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, doctorID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				patientList = new EnrolledPatientList();
+				patientList.setDoctorID(resultSet.getInt("doctor_uid"));
+				patientList.setPatientID(resultSet.getInt("patient_uid"));
+				patientList.setEnrolled_doctor_id(resultSet.getInt("patients_enrolled_dr"));
+				list.add(patientList);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
+	}
+	
+	public PatientsDetails getParticularPatient(int patientID) {
+		PatientsDetails patientsDetails = null;
+		try {
+			String query = "SELECT * FROM patients_details WHERE patient_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, patientID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				patientsDetails = new PatientsDetails();
+				patientsDetails.setPatientID(resultSet.getInt("patient_uid"));
+				patientsDetails.setFirstName(resultSet.getString("first_name"));
+				patientsDetails.setLastName(resultSet.getString("last_name"));
+				patientsDetails.setEmail(resultSet.getString("email_id"));
+				patientsDetails.setMobile(resultSet.getString("mobile_no"));
+				patientsDetails.setAge(resultSet.getString("age"));
+				patientsDetails.setAddress(resultSet.getString("address"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return patientsDetails;
 	}
 }

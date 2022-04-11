@@ -88,7 +88,7 @@
    											<div>
    												<%
    													PatientsDAO dao = new PatientsDAO(DatabaseConnection.getDatabaseConnection());
-   													boolean result = dao.isDoctorEnroll(dd.getDoctorID());
+   													boolean result = dao.isDoctorEnroll(dd.getDoctorID(), user2.getPatientID());
    													if(result) {
    												%>
    												<a class="btn btn-warning disabled" href="../EnrolledDoctor?doctor_id=<%=dd.getDoctorID() %>&patient_id=<%=user2.getPatientID()%>">Doctor Already Enrolled</a>
