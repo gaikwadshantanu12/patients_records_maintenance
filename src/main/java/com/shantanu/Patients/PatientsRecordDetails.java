@@ -1,7 +1,7 @@
 package com.shantanu.Patients;
 
 public class PatientsRecordDetails {
-	private int patientID;
+	private int patientID, recordsID;
 	private String diseaseName, diseaseDescription;
 	
 	public PatientsRecordDetails() {
@@ -15,6 +15,14 @@ public class PatientsRecordDetails {
 		this.diseaseDescription = diseaseDescription;
 	}
 	
+	public int getRecordsID() {
+		return recordsID;
+	}
+
+	public void setRecordsID(int recordsID) {
+		this.recordsID = recordsID;
+	}
+
 	public int getPatientID() {
 		return patientID;
 	}

@@ -285,4 +285,46 @@ public class PatientsDAO {
 		
 		return res;
 	}
+	
+	public boolean shareDataWithDoctor(int recordsID, int patientID, int doctorID) {
+		boolean res = false;
+		try {
+			String query = "INSERT INTO patients_shared_record_with_doctor(records_id, patient_uid, doctor_uid) values(?,?,?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, recordsID);
+			preparedStatement.setInt(2, patientID);
+			preparedStatement.setInt(3, doctorID);
+			
+			int i = preparedStatement.executeUpdate();
+			if(i== 1) {
+				res = true;
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	public boolean isDataAlreadySharedWithDoctor(int recordsID ,int doctorID, int patientID) {
+		boolean res = false;
+		
+		try {
+			String query = "SELECT * FROM patients_shared_record_with_doctor WHERE records_id=? AND doctor_uid=? AND patient_uid=?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, recordsID);
+			statement.setInt(2, doctorID);
+			statement.setInt(3, patientID);
+			
+			ResultSet resultSet = statement.executeQuery();
+			if(resultSet.next()) {
+				res = true;
+			}	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return res;
+	}
 }

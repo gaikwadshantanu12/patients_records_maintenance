@@ -8,11 +8,18 @@
 			
 		<div class="collapse navbar-collapse text-center" id="collapsenavbar">
 			<ul class="navbar-nav ml-auto">
-      						
+      				  					
       			<li class="nav-item">
         			<a class="nav-link text-white ml-2 mr-2" href="ViewMyPatients.jsp">
         				<i class="fa fa-list-ul mr-1" aria-hidden="true"></i>
           				View All Patients
+        			</a>
+      			</li>
+      			
+      			<li class="nav-item">
+        			<a class="nav-link text-white ml-2 mr-2" href="ViewSharedData.jsp">
+        				<i class="fa fa-database mr-1" aria-hidden="true"></i>
+          				View Shared Records
         			</a>
       			</li>
       			

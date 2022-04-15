@@ -18,6 +18,6 @@
 	</head>
 	
 	<body>
-		<%@include file="DashboardHeader.jsp" %>
+		<%@include file="ViewMyPatients.jsp" %>
 	</body>
 </html>

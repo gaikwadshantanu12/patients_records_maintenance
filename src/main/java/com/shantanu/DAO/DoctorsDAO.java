@@ -8,8 +8,10 @@ import java.util.List;
 
 import com.shantanu.Doctor.DoctorsDetails;
 import com.shantanu.Doctor.EnrolledPatientList;
+import com.shantanu.Doctor.SharedDataList;
 import com.shantanu.Patients.EnrolledDoctorsList;
 import com.shantanu.Patients.PatientsDetails;
+import com.shantanu.Patients.PatientsRecordDetails;
 
 public class DoctorsDAO {
 	private Connection connection;
@@ -128,5 +130,56 @@ public class DoctorsDAO {
 		}
 		
 		return patientsDetails;
+	}
+	
+	public List<SharedDataList> getListOfDataSharedWithMe(int doctorID) {
+		List<SharedDataList> list = new ArrayList<SharedDataList>();
+		SharedDataList sharedDataList = null;
+		try {
+			String query = "SELECT * FROM patients_shared_record_with_doctor WHERE doctor_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, doctorID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				sharedDataList = new SharedDataList();
+				sharedDataList.setDoctorsID(resultSet.getInt("doctor_uid"));;
+				sharedDataList.setPatientsID(resultSet.getInt("patient_uid"));
+				sharedDataList.setRecordsID(resultSet.getInt("records_id"));
+				sharedDataList.setShared_record_id(resultSet.getInt("shared_record_id"));
+				list.add(sharedDataList);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public PatientsRecordDetails getParticularPatientRecordDetails(int patientID, int recordID) {
+		PatientsRecordDetails patientsRecordDetails = null;
+		try {
+			String query = "SELECT * FROM patients_records WHERE patients_uid=? AND records_id=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, patientID);
+			preparedStatement.setInt(2, recordID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				patientsRecordDetails = new PatientsRecordDetails();
+				patientsRecordDetails.setPatientID(resultSet.getInt("patients_uid"));
+				patientsRecordDetails.setRecordsID(resultSet.getInt("records_id"));
+				patientsRecordDetails.setDiseaseName(resultSet.getString("disease_name"));
+				patientsRecordDetails.setDiseaseDescription(resultSet.getString("disease_description"));
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return patientsRecordDetails;
 	}
 }

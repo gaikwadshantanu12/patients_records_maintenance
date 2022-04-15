@@ -1,3 +1,5 @@
+<%@page import="com.shantanu.Doctor.DoctorsDetails"%>
+<%@page import="com.shantanu.Patients.EnrolledDoctorsList"%>
 <%@page import="com.shantanu.Patients.ViewAllPatientsRecords"%>
 <%@page import="java.util.List"%>
 <%@page import="com.shantanu.DatabaseConnect.DatabaseConnection"%>
@@ -55,13 +57,43 @@
 							
 							<div class="card-deck m-3">
   								<div class="card">
-    								<img class="card-img-top rounded-circle mx-auto p-3" src="../Images/list_technology_icon.png" style="max-width: 100px; max-height: 100px;" alt="Card image cap">
     								<div class="card-body">
      									<h5 class="card-title"><%= viewAllDetails.getDiseaseName() %></h5>
      									<p class="card-text"><%= viewAllDetails.getDiseaseDescription() %></p>
     								</div>
     								<div class="card-footer">
       									<small class="text-muted">Uploaded On : <%= viewAllDetails.getDate() %> &amp; <%= viewAllDetails.getTime() %></small>
+      									
+      									<div class="btn-group ml-4">
+  											<button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    											Share With Enroll Doctor
+ 											</button>
+  											<div class="dropdown-menu">
+  											
+  												<%
+													List<EnrolledDoctorsList> doctorsLists = patientsDAO.getListofEnrolledDoctor(user4.getPatientID());
+							
+													for(EnrolledDoctorsList enrolled_list : doctorsLists) {
+														DoctorsDetails dd = patientsDAO.getParticularDoctor(enrolled_list.getDoctorID());
+														
+														boolean result = patientsDAO.isDataAlreadySharedWithDoctor(viewAllDetails.getRecordsID(), dd.getDoctorID(), user4.getPatientID());
+														if (result) {
+												%>
+												
+													<a class="dropdown-item disabled" href="" onclick="alert('Particular record already shared with the respective doctor !')">Dr. <%=dd.getFirstName()%>&nbsp;<%=dd.getLastName()%></a>
+												
+												<%
+														} else {
+												%>
+												
+												<a class="dropdown-item" href="../SharedRecordWithDoctor?doctor_id=<%=dd.getDoctorID()%>&patient_id=<%=user4.getPatientID()%>&records_id=<%=viewAllDetails.getRecordsID()%>">Dr. <%=dd.getFirstName()%>&nbsp;<%=dd.getLastName()%></a>
+												
+												<%
+														}
+													}
+											%>
+  											</div>
+										</div>
     								</div>
   								</div>
 							</div>
@@ -71,7 +103,5 @@
 					</div>
 				</div>
 			</div>
-			
-			
 	</body>
 </html>
