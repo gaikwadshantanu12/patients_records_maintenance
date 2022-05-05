@@ -99,6 +99,7 @@ public class PatientsDAO {
 				patientsRecordsDetails.setRecordsID(resultSet.getInt("records_id"));
 				patientsRecordsDetails.setDiseaseName(resultSet.getString("disease_name"));
 				patientsRecordsDetails.setDiseaseDescription(resultSet.getString("disease_description"));
+				patientsRecordsDetails.setDiseaseFile(resultSet.getString("disease_file_name"));
 				patientsRecordsDetails.setDate(resultSet.getDate("uploaded_date"));
 				patientsRecordsDetails.SetTime(resultSet.getTime("uploaded_date"));
 				patientsRecordsDetails.setPatientsUID(resultSet.getInt("patients_uid"));
@@ -151,12 +152,13 @@ public class PatientsDAO {
 		boolean res = false;
 		
 		try {
-			String query = "INSERT INTO patients_records(disease_name, disease_description, patients_uid) values(?,?,?)";
+			String query = "INSERT INTO patients_records(disease_name, disease_description, disease_file_name, patients_uid) values(?,?,?,?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setString(1, details.getDiseaseName());
 			preparedStatement.setString(2, details.getDiseaseDescription());
-			preparedStatement.setInt(3, details.getPatientID());
+			preparedStatement.setString(3, details.getFileName());
+			preparedStatement.setInt(4, details.getPatientID());
 			
 			int i = preparedStatement.executeUpdate();
 			if(i== 1) {

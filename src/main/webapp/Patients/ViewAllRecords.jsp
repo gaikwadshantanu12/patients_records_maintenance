@@ -94,6 +94,7 @@
 											%>
   											</div>
 										</div>
+										<a href="<%=request.getContextPath()%>/DownloadRecordFile?fileName=<%= viewAllDetails.getDiseaseFile() %>">Download Record</a>
     								</div>
   								</div>
 							</div>

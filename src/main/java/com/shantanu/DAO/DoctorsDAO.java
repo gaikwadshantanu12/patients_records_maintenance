@@ -174,6 +174,7 @@ public class DoctorsDAO {
 				patientsRecordDetails.setRecordsID(resultSet.getInt("records_id"));
 				patientsRecordDetails.setDiseaseName(resultSet.getString("disease_name"));
 				patientsRecordDetails.setDiseaseDescription(resultSet.getString("disease_description"));
+				patientsRecordDetails.setFileName(resultSet.getString("disease_file_name"));
 			}
 		} 
 		catch (Exception e) {

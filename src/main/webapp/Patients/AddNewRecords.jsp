@@ -36,7 +36,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<form action="../AddNewRecords" method="POST">
+						<form action="../AddNewRecords" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="patientsID" id="patientsID" value="<%=user3.getPatientID()%>">
 							
 							<%
@@ -48,12 +48,12 @@
 									session.removeAttribute("record-inserted");
 								}
 							%>
-						
+							
 							<%
 								String record_not_inserted = (String)session.getAttribute("record-not-inserted");
 								if(record_not_inserted != null) {
 							%>
-							<div class="alert alert-danger" role="alert"><%= record_not_inserted%></div>
+							
 							<%
 									session.removeAttribute("record_not_inserted");
 								}
@@ -68,6 +68,11 @@
   								<label for="diseaseDescription">Enter Disease Description</label>
     							<textarea rows="4" cols="" class="form-control" name="diseaseDescription" id="diseaseDescription" placeholder="Enter Disease Description" style="resize: none;" required="required"></textarea>
   							</div>
+  							
+  							<div class="form-group mt-4">
+  								<label for="diseaseRecord">Select Disease Record/File</label>
+    							<input type="file" class="form-control" name="diseaseRecord" id="diseaseRecord" accept="image/*,.pdf" aria-describedby="titleHelp" required="required">
+ 							</div>
   
   							<div class="container text-center">
   								<button type="submit" class="btn btn-outline-dark mt-3">Add Health Record</button>

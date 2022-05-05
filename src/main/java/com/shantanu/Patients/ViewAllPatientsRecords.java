@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ViewAllPatientsRecords {
 	private int recordsID, patientsUID;
-	private String diseaseName, diseaseDescription;
+	private String diseaseName, diseaseDescription, diseaseFile;
 	private Date date;
 	private Time time;
 	
@@ -14,7 +14,7 @@ public class ViewAllPatientsRecords {
 	}
 
 	public ViewAllPatientsRecords(int recordsID, int patientsUID, String diseaseName, String diseaseDescription,
-			Date date, Time time) {
+			Date date, Time time, String diseaseFile) {
 		super();
 		this.recordsID = recordsID;
 		this.patientsUID = patientsUID;
@@ -22,8 +22,17 @@ public class ViewAllPatientsRecords {
 		this.diseaseDescription = diseaseDescription;
 		this.date = date;
 		this.time = time;
+		this.diseaseFile = diseaseFile;
 	}
 	
+	public String getDiseaseFile() {
+		return diseaseFile;
+	}
+
+	public void setDiseaseFile(String diseaseFile) {
+		this.diseaseFile = diseaseFile;
+	}
+
 	public int getRecordsID() {
 		return recordsID;
 	}

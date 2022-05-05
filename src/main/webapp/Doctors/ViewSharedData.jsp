@@ -69,6 +69,8 @@
     										PatientsDetails dePatientsDetails = doctorsDAO.getParticularPatient(shared_data_list.getPatientsID());
     									%>
       									<small class="text-muted">Record Shared By : <%=dePatientsDetails.getFirstName() %>&nbsp;<%=dePatientsDetails.getLastName() %></small>
+      									
+      									<a href="<%=request.getContextPath()%>/DownloadRecordFile?fileName=<%= dd.getFileName() %>">Download Record</a>
     								</div>
   								</div>
 							</div>
