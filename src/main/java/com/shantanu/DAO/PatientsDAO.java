@@ -12,6 +12,7 @@ import com.shantanu.Doctor.DoctorsDetails;
 import com.shantanu.Patients.EnrolledDoctorsList;
 import com.shantanu.Patients.PatientsDetails;
 import com.shantanu.Patients.PatientsRecordDetails;
+import com.shantanu.Patients.PatientsSharedRecordDoctorList;
 import com.shantanu.Patients.ViewAllPatientsRecords;
 
 public class PatientsDAO {
@@ -309,6 +310,27 @@ public class PatientsDAO {
 		return res;
 	}
 	
+	public boolean dontShareDataWithDoctor(int recordsID, int patientID, int doctorID) {
+		boolean res = false;
+		try {
+			String query = "DELETE FROM patients_shared_record_with_doctor WHERE records_id=? AND patient_uid=? AND doctor_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, recordsID);
+			preparedStatement.setInt(2, patientID);
+			preparedStatement.setInt(3, doctorID);
+			
+			int i = preparedStatement.executeUpdate();
+			if(i== 1) {
+				res = true;
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 	public boolean isDataAlreadySharedWithDoctor(int recordsID ,int doctorID, int patientID) {
 		boolean res = false;
 		
@@ -321,6 +343,53 @@ public class PatientsDAO {
 			
 			ResultSet resultSet = statement.executeQuery();
 			if(resultSet.next()) {
+				res = true;
+			}	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return res;
+	}
+	
+	public List<PatientsSharedRecordDoctorList> getListofRecordSharedWithDoctor(int patientID) {
+		List<PatientsSharedRecordDoctorList> list = new ArrayList<PatientsSharedRecordDoctorList>();
+		PatientsSharedRecordDoctorList paDoctorList = null;
+		try {
+			String query = "SELECT * FROM patients_shared_record_with_doctor WHERE patient_uid=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, patientID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				paDoctorList = new PatientsSharedRecordDoctorList();
+				paDoctorList.setDoctor_id(resultSet.getInt("doctor_uid"));
+				paDoctorList.setPatient_id(resultSet.getInt("patient_uid"));
+				paDoctorList.setRecords_id(resultSet.getInt("records_id"));
+				paDoctorList.setShared_record_id(resultSet.getInt("shared_record_id"));
+				list.add(paDoctorList);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return list;
+	}
+	
+	public boolean deleteMyRecord(int patientID, int recordID) {
+		boolean res = false;
+		
+		try {
+			String query = "DELETE FROM patients_records WHERE records_id=? AND patients_uid=?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, recordID);
+			statement.setInt(2, patientID);
+			
+			int i = statement.executeUpdate();
+			
+			if(i == 1) {
 				res = true;
 			}	
 		} catch (Exception e) {

@@ -1,3 +1,4 @@
+<%@page import="com.shantanu.Patients.PatientsSharedRecordDoctorList"%>
 <%@page import="com.shantanu.Doctor.DoctorsDetails"%>
 <%@page import="com.shantanu.Patients.EnrolledDoctorsList"%>
 <%@page import="com.shantanu.Patients.ViewAllPatientsRecords"%>
@@ -64,6 +65,7 @@
     								<div class="card-footer">
       									<small class="text-muted">Uploaded On : <%= viewAllDetails.getDate() %> &amp; <%= viewAllDetails.getTime() %></small>
       									
+      									<!-- Share Record With Enroll Doctor Function  -->
       									<div class="btn-group ml-4">
   											<button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     											Share With Enroll Doctor
@@ -94,7 +96,41 @@
 											%>
   											</div>
 										</div>
-										<a href="<%=request.getContextPath()%>/DownloadRecordFile?fileName=<%= viewAllDetails.getDiseaseFile() %>">Download Record</a>
+										
+										<!-- Don't Share Record With Enroll Doctor Function  -->
+										<div class="btn-group ml-4">
+											<button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    											Don't Share With Enroll Doctor
+ 											</button>
+  											<div class="dropdown-menu">
+  												<%
+													List<PatientsSharedRecordDoctorList> shared_record_list = patientsDAO.getListofRecordSharedWithDoctor(user4.getPatientID());
+							
+													for(PatientsSharedRecordDoctorList record_list : shared_record_list) {
+														DoctorsDetails dd2 = patientsDAO.getParticularDoctor(record_list.getDoctor_id());
+														
+														boolean result = patientsDAO.isDataAlreadySharedWithDoctor(viewAllDetails.getRecordsID(), dd2.getDoctorID(), user4.getPatientID());
+														if(result) {
+												%>
+												
+												<a class="dropdown-item" href="../DontSharedRecordWithDoctor?doctor_id=<%=dd2.getDoctorID()%>&patient_id=<%=user4.getPatientID()%>&records_id=<%=viewAllDetails.getRecordsID()%>">Dr. <%=dd2.getFirstName()%>&nbsp;<%=dd2.getLastName()%></a>
+												
+												<%
+														}
+														else {
+												%>
+												<!--  
+												<a class="dropdown-item disabled" href="" onclick="alert('You need to first share this record to do this action !')">This record is not shared with anyone</a>
+												-->
+												<%
+														}
+													}
+												%>
+  											</div>
+										</div>
+										<a class="ml-4" href="<%=request.getContextPath()%>/DownloadRecordFile?fileName=<%= viewAllDetails.getDiseaseFile() %>&recordID=<%=viewAllDetails.getRecordsID()%>">Download Record</a>
+										
+										<a class="ml-4" href="<%=request.getContextPath()%>/DeleteMyRecord?patient_id=<%=user4.getPatientID()%>&records_id=<%=viewAllDetails.getRecordsID()%>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     								</div>
   								</div>
 							</div>
