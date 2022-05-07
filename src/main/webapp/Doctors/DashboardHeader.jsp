@@ -29,7 +29,7 @@
           				Settings
         			</a>
         			<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
-         				<a class="dropdown-item" href="#"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>My Profile</a>
+         				<a class="dropdown-item" href="DoctorsProfile.jsp"><i class="fa fa-user-circle mr-2" aria-hidden="true"></i>My Profile</a>
          				<div class="dropdown-divider"></div>
           				<a class="dropdown-item" href="../DoctorsLogout"><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Log Out</a>
         			</div>

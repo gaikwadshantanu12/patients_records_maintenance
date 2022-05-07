@@ -69,6 +69,11 @@ public class DoctorsDAO {
 				det.setLastName(resultSet.getString("last_name"));
 				det.setPassword(resultSet.getString("password"));
 				det.setDoctorID(resultSet.getInt("doctor_uid"));
+				det.setMobile1(resultSet.getString("mobile_no1"));
+				det.setMobile2(resultSet.getString("mobile_no2"));
+				det.setEducationDetails(resultSet.getString("education_details"));
+				det.setHospitalName(resultSet.getString("hospital_name"));
+				det.setHospitalAddress(resultSet.getString("hospital_address"));
 			}
 			
 		} 

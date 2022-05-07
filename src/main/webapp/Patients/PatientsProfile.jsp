@@ -24,58 +24,79 @@
 			h6 {
 				color: #4B4453;
 			}
-			h4 {
+			h5 {
 				color: #C34A36;
+			}
+			
+			body {
+				background: #D5CABD;
+			}
+
+			.bg-custom {
+				background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
+			}
+			
+			label, h5 {
+  				font-family: Arial, Helvetica, sans-serif;
 			}
 		</style>
 	</head>
 	
 	<body>
-		<div class="container-fluid p-0">
-			<h1 class="text-center font-weight-bold mt-4"><%=user2.getFirstName() %>'s Profile</h1>
-		
-			<div class="container mt-4">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-row">
-    						<div class="form-group col">
-   								<h6>First Name</h6>
-      							<h4><%=user2.getFirstName() %></h4>
-   							</div>
-	    					<div class="form-group col">
-    							<h6>Last Name</h6>
-      							<h4><%=user2.getLastName() %></h4>
-   							</div>
-  						</div>
-  						
-  						<div class="form-row">
-    						<div class="form-group col">
-   								<h6>Email</h6>
-      							<h4><%=user2.getEmail()%></h4>
-   							</div>
-	    					<div class="form-group col">
-    							<h6>Age</h6>
-      							<h4><%=user2.getAge() %></h4>
-   							</div>
-  						</div>
-  						
-  						<div class="form-row">
-    						<div class="form-group col">
-   								<h6>Mobile</h6>
-      							<h4><%=user2.getMobile() %></h4>
-   							</div>
-	    					<div class="form-group col">
-    							<h6>Gender</h6>
-      							<h4><%=user2.getGender() %></h4>
-   							</div>
-  						</div>
-  						
-  						<div class="form-row">
-	    					<div class="form-group col">
-    							<h6>Address</h6>
-      							<h4><%=user2.getAddress() %></h4>
-   							</div>
-  						</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 offset-md-3 mb-5">
+					<div class="card mt-5">
+						<div class="card-header text-center text-white bg-custom">
+							<i class="fa fa-user fa-3x" aria-hidden="true"></i>
+							<h4 class="mt-3">Patient's Profile Section</h4>
+						</div>
+					
+						<div class="card-body">
+							<form action="" method="">
+								<div class="form-row">
+    								<div class="form-group col">
+   										<label>First Name</label>
+      									<h5><%=user2.getFirstName() %></h5>
+   									</div>
+	    							<div class="form-group col">
+    									<label>Last Name</label>
+      									<h5><%=user2.getLastName() %></h5>
+      								</div>
+  								</div>
+	    						
+  								<div class="form-group">
+    								<label for="inputEmail">Patient's Email ID</label>
+     								<h5><%=user2.getEmail() %></h5>
+	    						</div>
+	    							
+								<div class="form-group">
+    								<label>Patient's Gender</label><br>
+    								<h5><%=user2.getGender() %></h5>
+  								</div>
+  								
+  								<div class="form-row">
+  									<div class="form-group col-8">
+    									<label>Patient's Mobile Number</label>
+     									<div class="input-group mb-2">
+        									<h5><%=user2.getMobile() %></h5>
+      									</div>
+	    							</div>
+	    							
+ 									<div class="form-group col-4">
+    									<label>Patient's Age</label>
+    									<h5><%=user2.getAge() %></h5>
+  									</div>
+  								</div>
+  							
+  								<div class="form-group">
+    								<label>Patient's Residential Address</label>
+   									<h5><%=user2.getAddress() %></h5>
+	 							</div>
+	 							
+	 							<p class="text-center font-weight-bold mt-4">Click the link below to navigate to patient's dashboard<br><a href="PatientsDashboard.jsp">Go To Dashboard</a></p>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
