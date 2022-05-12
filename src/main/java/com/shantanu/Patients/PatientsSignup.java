@@ -1,23 +1,32 @@
 package com.shantanu.Patients;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.shantanu.DAO.PatientsDAO;
+import com.shantanu.DAO.UploadDAO;
 import com.shantanu.DatabaseConnect.DatabaseConnection;
 import com.shantanu.Validation.Validation;
 
 @WebServlet("/PatientsSignup")
+
 public class PatientsSignup extends HttpServlet {
 	String firstName, lastName, email, password, confirmPassword, gender, mobile, age, address;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getData(request);
+		
 		HttpSession session;
 		
 		Validation validation = new Validation();
@@ -87,7 +96,7 @@ public class PatientsSignup extends HttpServlet {
 			response.sendRedirect("../patients_records_maintenance/Patients/PatientsSignup.jsp");
 		}
 		
-		//System.out.println(firstName+"\n"+lastName+"\n"+email+"\n"+password+"\n"+confirmPassword+"\n"+gender+"\n"+mobile+"\n"+age+"\n"+address);
+		//System.out.println(firstName+"\n"+lastName+"\n"+email+"\n"+password+"\n"+confirmPassword+"\n"+gender+"\n"+mobile+"\n"+age+"\n"+address+"\n"+fileName);
 	}
 
 	public void getData(HttpServletRequest request) {

@@ -38,6 +38,7 @@ public class PatientsDAO {
 			preparedStatement.setString(6, details.getMobile());
 			preparedStatement.setString(7, details.getAge());
 			preparedStatement.setString(8, details.getAddress());
+			//preparedStatement.setString(9, details.getProfileImage());
 			
 			int i = preparedStatement.executeUpdate();
 			if(i== 1) {

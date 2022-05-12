@@ -2,10 +2,10 @@ package com.shantanu.Patients;
 
 public class PatientsDetails {
 	private int patientID;
-	private String firstName, lastName, password, email, gender, address, age, mobile;
+	private String firstName, lastName, password, email, gender, address, age, mobile, profileImage;
 	
 	public PatientsDetails(String firstName, String lastName, String password, String email,
-			String gender, String address, String age, String mobile) {
+			String gender, String address, String age, String mobile, String profileImage) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -15,8 +15,17 @@ public class PatientsDetails {
 		this.address = address;
 		this.age = age;
 		this.mobile = mobile;
+		this.profileImage = profileImage;
 	}
 	
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
 	public PatientsDetails() {
 		super();
 	}

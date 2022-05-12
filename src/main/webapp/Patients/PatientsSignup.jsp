@@ -124,12 +124,12 @@
    									<textarea rows="3" cols="" class="form-control" name="inputAddress" id="inputAddress" placeholder="Enter Your Address" style="resize: none;" required="required"></textarea>
 	 							</div>
  							
- 								<!-- 
+ 								<!--  
  								<div class="form-group">
     								<label for="profileImage">Select Profile Photo</label>
-    								<input type="file" class="form-control" id="profileImage" name="profileImage" accept=".jpg,.jpeg,.png,.pdf" required="required">
+    								<input type="file" class="form-control" id="profileImage" name="profileImage" accept="image/*" required="required">
   								</div>
-  								 -->
+  								-->
   	
   								<div class="d-flex justify-content-center mt-5 mb-3">
   									<button type="submit" id="registerBtn" name="registerBtn" class="btn btn-success">Register As Patient</button>
