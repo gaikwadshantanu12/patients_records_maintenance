@@ -59,3 +59,24 @@ Now, if you want you may import this project in Eclipse IDE and try to run it an
 2. With respect to text records, patient can also add the pdf file or scanned image file to web portal, for easy recognition of hospital name, doctor name, medicine prescription and details of disease.
 3. It would provide and easy access for the user to go through the pre-records will less efforts as the user has to only carry their sign in details.
 4. As walking with the present era the app provide paper less motto to save nature as well as provide a security assurance.
+
+
+# Outputs / Screenshots
+Webapp's Home Page   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/home_page.png)
+
+## Patients Module
+Signup Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_signup.png)
+
+Login Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_login.png)
+
+Add New Record Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_add_record.png)
+
+Doctor's Available Screen  
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_doctor_available.png)
+
+Enrolled Doctors Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_enroll_doctor.png)
