@@ -27,30 +27,30 @@ We used ArrayList as our primary Data Structure. It is a combination of function
 
 
 # Installation
-Step 1 :  
+**Step 1 :**  
 Navigate to the link https://github.com/gaikwadshantanu12/patients_records_maintenance.
 
-Step 2 :  
+**Step 2 :**  
 Then click on ``Green Color`` Code button and click on ``HTTPS`` option. You will get the link below it like this - https://github.com/gaikwadshantanu12/patients_records_maintenance.git
 
-Step 3 :   
+**Step 3 :**   
 Open the terminal/command prompt in your laptop/PC and paste the copied link along with ``clone`` keyword like this ``clone https://github.com/gaikwadshantanu12/patients_records_maintenance.git`` in the terminal/command prompt and hit enter. 
 
-Step 4 :  
+**Step 4 :**  
 Now, you have downloaded the entire rerepository locally and you can access the code now and may start learning with it.   
 
-Step 5 :   
+**Step 5 :**   
 Now, if you want you may import this project in Eclipse IDE and try to run it and work on it. And check its actual functionality.
 
 
 # Details of Design, Working and Processes
-System Architecture :        
+**System Architecture :**        
 [](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/system_architecture.png)
 
-Patient's Module Flowchart :      
+**Patient's Module Flowchart :**      
 [](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/patient_module_flowchart.jpg)
 
-Doctor's Module Flowchart :     
+**Doctor's Module Flowchart :**     
 [](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/doctor_module_flowchart.jpg)
 
 
