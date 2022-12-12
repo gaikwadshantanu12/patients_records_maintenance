@@ -66,7 +66,7 @@ Webapp's Home Page
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/home_page.png)
 
 ### Patient's Module
-<h1>Signup Screen</h1>   
+Signup Screen   
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_signup.png)
 
 Login Screen   
