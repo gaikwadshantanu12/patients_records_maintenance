@@ -61,7 +61,7 @@ Now, if you want you may import this project in Eclipse IDE and try to run it an
 4. As walking with the present era the app provide paper less motto to save nature as well as provide a security assurance.
 
 
-# Outputs / Screenshots
+# Outputs
 Webapp's Home Page     
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/home_page.png)
 
