@@ -62,11 +62,11 @@ Now, if you want you may import this project in Eclipse IDE and try to run it an
 
 
 # Outputs / Screenshots
-Webapp's Home Page   
+Webapp's Home Page     
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/home_page.png)
 
-## Patients Module
-Signup Screen   
+### Patient's Module
+<h1>Signup Screen</h1>   
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_signup.png)
 
 Login Screen   
@@ -80,3 +80,17 @@ Doctor's Available Screen
 
 Enrolled Doctors Screen   
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Patients/patient_enroll_doctor.png)
+
+
+### Doctor's Module
+Signup Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Doctors/doctor_signup.png)
+
+Login Screen    
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Doctors/doctor_login.png)
+
+My Patients Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Doctors/doctor_my_patient.png)
+
+Records Shared By Patient Screen   
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Doctors/record_shared_by_patient.png)
