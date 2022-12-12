@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/100210691/207079283-339a956c-e940-4d72-a963-b4eb06d63eec.png)
+
+
 # About Project
 Our project offers a web-based app so that patient’s medical records are maintained online. This offers ease of access to doctors who could examine their past records, and based on their observations the new doctor may advice or add new check-ups or different medications.
 
