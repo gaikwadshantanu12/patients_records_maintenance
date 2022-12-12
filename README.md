@@ -37,7 +37,10 @@ Step 3 :
 Open the terminal/command prompt in your laptop/PC and paste the copied link along with ``clone`` keyword like this ``clone https://github.com/gaikwadshantanu12/patients_records_maintenance.git`` in the terminal/command prompt and hit enter. 
 
 Step 4 :  
-Now, you have downloaded the entire rerepository locally and you can access the code now and may start learning with it.
+Now, you have downloaded the entire rerepository locally and you can access the code now and may start learning with it.   
+
+Step 5 :   
+Now, if you want you may import this project in Eclipse IDE and try to run it and work on it. And check its actual functionality.
 
 
 # Details of Design, Working and Processes
