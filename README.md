@@ -45,13 +45,13 @@ Now, if you want you may import this project in Eclipse IDE and try to run it an
 
 # Details of Design, Working and Processes
 **System Architecture :**        
-[](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/system_architecture.png)
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/system_architecture.png)
 
 **Patient's Module Flowchart :**      
-[](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/patient_module_flowchart.jpg)
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/patient_module_flowchart.jpg)
 
 **Doctor's Module Flowchart :**     
-[](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/doctor_module_flowchart.jpg)
+![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/doctor_module_flowchart.jpg)
 
 
 # Working
