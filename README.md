@@ -97,7 +97,3 @@ My Patients Screen
 
 Records Shared By Patient Screen   
 ![](https://github.com/gaikwadshantanu12/patients_records_maintenance/blob/master/src/main/webapp/Images/github_images/Output/Doctors/record_shared_by_patient.png)
-
-# Documentation
-**1. [Presentation PPT](https://u.pcloud.link/publink/show?code=XZsRbeVZNtKllAvXzBJm66Hm214CPVDndIDX)**   
-**2. [Project Report File](https://u.pcloud.link/publink/show?code=XZORbeVZFByit6aWrQRQW4E0uJEKM8jxR6oX)**
